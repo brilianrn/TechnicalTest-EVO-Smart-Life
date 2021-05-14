@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Si Kancil",
+    "amount": 10,
+    "price": 12.49,
+    "type": "book",
+    "status": "import",
+    "image": "https://cdn.popmama.com/content-images/post/20200605/kancil-buaya-1jpg-147a9d307b2d9ae70b6df1c4250e50e5_800x420.jpg",
+    "tax": 5
+  },
+  {
+    "name": "CD Musik",
+    "amount": 5,
+    "price": 14.99,
+    "type": "electronic",
+    "status": "import",
+    "image": "https://i.ytimg.com/vi/JqyyQG9jivY/maxresdefault.jpg",
+    "tax": 15
+  },
+  {
+    "name": "SilverQueen",
+    "amount": 25,
+    "price": 0.85,
+    "type": "food",
+    "status": "local",
+    "image": "https://assets.pikiran-rakyat.com/crop/0x0:0x0/750x500/photo/2020/02/15/4203321531.jpg",
+    "tax": 0
+  }
+]

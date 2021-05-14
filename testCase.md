@@ -1,3 +1,7 @@
+Pajak penjualan dasar berlaku dengan tarif 10% untuk semua barang, kecuali buku, makanan, dan produk medis yang dibebaskan. Bea masuk adalah pajak penjualan tambahan yang berlaku atas semua barang impor dengan tarif 5%, tanpa pengecualian.
+
+Ketika saya membeli barang, saya menerima tanda terima yang mencantumkan nama semua barang dan harganya (termasuk pajak), diakhiri dengan total biaya barang, dan jumlah total pajak penjualan yang dibayarkan. Aturan pembulatan untuk pajak penjualan adalah bahwa untuk tarif pajak n%, harga rak p berisi (np / 100 dibulatkan ke 0,05 terdekat) jumlah pajak penjualan.
+
 INPUT:
 
 Masukkan 1:
