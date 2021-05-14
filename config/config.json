@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "macos",
+    "password": "postgres",
+    "database": "evoSmartlife-challenge",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "brilian",
+    "password": "postgres",
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "brilian",
+    "password": "postgres",
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
