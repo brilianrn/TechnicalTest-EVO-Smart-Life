@@ -1,5 +1,5 @@
 const { verifyToken } = require('../helpers/jwt');
-const { User, Item } = require('../models');
+const { User, Item, Cart } = require('../models');
 
 function authentication(req, res, next) {
   try {
@@ -26,8 +26,40 @@ function authentication(req, res, next) {
   }
 }
 
-function authorization() {
-
+function authorization(req, res, next) {
+  if (req.params.id) {
+    Cart.findOne({
+      where: {
+        id: +req.params.id
+      }
+    })
+      .then(data => {
+        if (+data.UserId === +req.currentUser.id) {
+          next();
+        } else {
+          throw new Error({
+            name: 'Unauthorization'
+          })
+        }
+      })
+      .catch(err => {
+        next(err);
+      })
+  } else {
+    Cart.findAll()
+      .then(data => {
+        if (+data[0].UserId === +req.currentUser.id) {
+          next();
+        } else {
+          throw new Error({
+            name: 'Unauthorization'
+          })
+        }
+      })
+      .catch(err => {
+        next(err);
+      })
+  }
 }
 
 module.exports = { authentication, authorization };

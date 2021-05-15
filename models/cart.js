@@ -30,16 +30,24 @@ module.exports = (sequelize, DataTypes) => {
       beforeCreate(cart) {
         const taxSell = 10;
         const taxImport = 5;
+        let priceAfterTax = 0;
 
-        if (cart.type !== 'book' || cart.type !== 'food' || cart.type !== 'medicine' && cart.itemStatus === 'import') {
-          cart.tax = taxSell + taxImport;
-        } else if (cart.type === 'book' || cart.type === 'food' || cart.type === 'medicine' && cart.itemStatus === 'import') {
-          cart.tax = taxImport;
-        } else if (cart.type !== 'book' || cart.type !== 'food' || cart.type !== 'medicine' && cart.itemStatus === 'local') {
-          cart.tax = taxSell;
-        } else if (cart.type === 'book' || cart.type === 'food' || cart.type === 'medicine' && cart.itemStatus === 'local') {
-          cart.tax = 0;
+        if (cart.type === 'book' || cart.type === 'food' || cart.type === 'medicine') {
+          if (cart.itemStatus === 'import') {
+            cart.tax = taxImport;
+          } else if (cart.itemStatus === 'local') {
+            cart.tax = 0;
+          }
+        } else if (cart.type !== 'book' || cart.type !== 'food' || cart.type !== 'medicine') {
+          if (cart.itemStatus === 'import') {
+            cart.tax = taxImport + taxSell;
+          } else if (cart.itemStatus === 'local') {
+            cart.tax = taxSell;
+          }
         }
+
+        priceAfterTax = ((cart.tax/100) * +cart.price) + cart.price;
+        cart.totalPrice = +priceAfterTax * +cart.amout;
       }
     }
   });
