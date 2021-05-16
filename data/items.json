@@ -70,6 +70,14 @@
     "status": "import",
     "image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//100/MTA-3709880/doriva_doriva-oriental-coklat-import-turkey--1-kg-_full03.jpg",
     "tax": 5
+  },
+  {
+    "name": "Oskadon",
+    "amount": 20,
+    "price": 9.75,
+    "type": "medicine",
+    "status": "local",
+    "image": "https://cf.shopee.co.id/file/d42dba7d8eda5c65c944385d6d6ab7d4",
+    "tax": 0
   }
-  
 ]
