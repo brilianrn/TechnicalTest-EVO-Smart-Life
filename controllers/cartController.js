@@ -51,69 +51,77 @@ class CartController {
     const taxSell = 10;
     const taxImport = 5;
 
-    if (req.body.type === 'book' || req.body.type === 'food' || req.body.type === 'medicine') {
-      if (req.body.itemStatus === 'import') {
-        oldCart = {
-          name: req.body.name,
-          amout: req.body.amount,
-          type: req.body.type,
-          itemStatus: req.body.itemStatus,
-          cartStatus: req.body.cartStatus,
-          price: req.body.price,
-          tax: taxImport,
-          totalPrice: (((taxImport / 100) * +req.body.price) + req.body.price) * +req.body.amount,
-          UserId: +req.currentUser.id
-        };
-      } else if (req.body.itemStatus === 'local') {
-        oldCart = {
-          name: req.body.name,
-          amout: req.body.amount,
-          type: req.body.type,
-          itemStatus: req.body.itemStatus,
-          cartStatus: req.body.cartStatus,
-          price: req.body.price,
-          tax: 0,
-          totalPrice: (((0 / 100) * +req.body.price) + req.body.price) * +req.body.amount,
-          UserId: +req.currentUser.id
-        };
-      }
-    } else if (req.body.type !== 'book' || req.body.type !== 'food' || req.body.type !== 'medicine') {
-      if (req.body.itemStatus === 'import') {
-        oldCart = {
-          name: req.body.name,
-          amout: req.body.amount,
-          type: req.body.type,
-          itemStatus: req.body.itemStatus,
-          cartStatus: req.body.cartStatus,
-          price: req.body.price,
-          tax: taxSell + taxImport,
-          totalPrice: ((((taxImport + taxSell) / 100) * +req.body.price) + req.body.price) * +req.body.amount,
-          UserId: +req.currentUser.id
-        };
-      } else if (req.body.itemStatus === 'local') {
-        oldCart = {
-          name: req.body.name,
-          amout: req.body.amount,
-          type: req.body.type,
-          itemStatus: req.body.itemStatus,
-          cartStatus: req.body.cartStatus,
-          price: req.body.price,
-          tax: taxSell,
-          totalPrice: (((taxSell / 100) * +req.body.price) + req.body.price) * +req.body.amount,
-          UserId: +req.currentUser.id
-        };
-      }
-    }
+    if (!req.body.checkout) {
+      Cart.findOne({ where: { id } })
+        .then(findCart => {
+          if (findCart.type === 'book' || findCart.type === 'food' || findCart.type === 'medicine') {
+            if (findCart.itemStatus === 'import') {
+              oldCart = {
+                name: findCart.name,
+                amout: +req.body.amount,
+                type: findCart.type,
+                itemStatus: findCart.itemStatus,
+                cartStatus: findCart.cartStatus,
+                price: findCart.price,
+                tax: taxImport,
+                totalPrice: (((taxImport / 100) * +findCart.price) + findCart.price) * ++req.body.amount,
+                UserId: +req.currentUser.id
+              };
+            } else if (findCart.itemStatus === 'local') {
+              oldCart = {
+                name: findCart.name,
+                amout: +req.body.amount,
+                type: findCart.type,
+                itemStatus: findCart.itemStatus,
+                cartStatus: findCart.cartStatus,
+                price: findCart.price,
+                tax: 0,
+                totalPrice: (((0 / 100) * +findCart.price) + findCart.price) * ++req.body.amount,
+                UserId: +req.currentUser.id
+              };
+            }
+          } else if (findCart.type !== 'book' || findCart.type !== 'food' || findCart.type !== 'medicine') {
+            if (findCart.itemStatus === 'import') {
+              oldCart = {
+                name: findCart.name,
+                amout: +req.body.amount,
+                type: findCart.type,
+                itemStatus: findCart.itemStatus,
+                cartStatus: findCart.cartStatus,
+                price: findCart.price,
+                tax: taxSell + taxImport,
+                totalPrice: ((((taxImport + taxSell) / 100) * +findCart.price) + findCart.price) * ++req.body.amount,
+                UserId: +req.currentUser.id
+              };
+            } else if (findCart.itemStatus === 'local') {
+              oldCart = {
+                name: findCart.name,
+                amout: +req.body.amount,
+                type: findCart.type,
+                itemStatus: findCart.itemStatus,
+                cartStatus: findCart.cartStatus,
+                price: findCart.price,
+                tax: taxSell,
+                totalPrice: (((taxSell / 100) * +findCart.price) + findCart.price) * ++req.body.amount,
+                UserId: +req.currentUser.id
+              };
+            }
+          }
 
-    Cart.update(oldCart, {
-      where: { id }
-    })
-      .then(_ => {
-        res.status(200).json({ message: `Cart with id ${id} success to updated` });
-      })
-      .catch(err => {
-        next(err);
-      })
+          Cart.update(oldCart, {
+            where: { id }
+          })
+            .then(data => {
+              res.status(200).json({ message: `Cart with id ${id} success to updated` });
+            })
+            .catch(err => {
+              next(err);
+            })
+        })
+        .catch(err => {
+          next(err);
+        })
+    }
   }
 
   static deleteCart(req, res, next) {
