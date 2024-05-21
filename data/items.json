@@ -1,0 +1,83 @@
+[
+  {
+    "name": "Si Kancil",
+    "amount": 10,
+    "price": 12.49,
+    "type": "book",
+    "status": "local",
+    "image": "https://cdn.popmama.com/content-images/post/20200605/kancil-buaya-1jpg-147a9d307b2d9ae70b6df1c4250e50e5_800x420.jpg",
+    "tax": 0
+  },
+  {
+    "name": "CD Musik",
+    "amount": 5,
+    "price": 14.99,
+    "type": "art",
+    "status": "local",
+    "image": "https://i.ytimg.com/vi/JqyyQG9jivY/maxresdefault.jpg",
+    "tax": 10
+  },
+  {
+    "name": "SilverQueen",
+    "amount": 25,
+    "price": 0.85,
+    "type": "food",
+    "status": "local",
+    "image": "https://assets.pikiran-rakyat.com/crop/0x0:0x0/750x500/photo/2020/02/15/4203321531.jpg",
+    "tax": 0
+  },
+  {
+    "name": "Lindt Swiss Luxury",
+    "amount": 10,
+    "price": 10.00,
+    "type": "food",
+    "status": "import",
+    "image": "https://s1.bukalapak.com/img/64748416621/large/Terlaris_Lindt_Swiss_Luxury_Selection_Chocolate_Coklat_Gift_.jpg",
+    "tax": 5
+  },
+  {
+    "name": "Sauvage Dior",
+    "amount": 20,
+    "price": 47.50,
+    "type": "parfume",
+    "status": "import",
+    "image": "https://s3.bukalapak.com/img/3630581646/large/minyak_wangi_parfum_import.jpg",
+    "tax": 15
+  },
+  {
+    "name": "Hugo Boss",
+    "amount": 5,
+    "price": 27.99,
+    "type": "parfume",
+    "status": "import",
+    "image": "https://ds393qgzrxwzn.cloudfront.net/resize/c500x500/cat1/img/images/0/ypKKriUAOY.jpg",
+    "tax": 15
+  },
+  {
+    "name": "Troupe",
+    "amount": 35,
+    "price": 18.99,
+    "type": "parfume",
+    "status": "local",
+    "image": "https://berkeluarga.id/media/2020/12/Saff-Co.jpg",
+    "tax": 10
+  },
+  {
+    "name": "Doriva",
+    "amount": 10,
+    "price": 11.25,
+    "type": "food",
+    "status": "import",
+    "image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//100/MTA-3709880/doriva_doriva-oriental-coklat-import-turkey--1-kg-_full03.jpg",
+    "tax": 5
+  },
+  {
+    "name": "Oskadon",
+    "amount": 20,
+    "price": 9.75,
+    "type": "medicine",
+    "status": "local",
+    "image": "https://cf.shopee.co.id/file/d42dba7d8eda5c65c944385d6d6ab7d4",
+    "tax": 0
+  }
+]
